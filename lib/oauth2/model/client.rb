@@ -2,7 +2,9 @@ module OAuth2
   module Model
     
     class Client < ActiveRecord::Base
-      self.table_name = :oauth2_clients
+      # self.table_name = :oauth2_clients
+      # using different table
+      self.table_name = :apps
       
       belongs_to :oauth2_client_owner, :polymorphic => true
       alias :owner  :oauth2_client_owner
