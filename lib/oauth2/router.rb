@@ -41,10 +41,11 @@ module OAuth2
         request = request_from(env)
         params  = request.params
         header  = request.env['HTTP_AUTHORIZATION']
+        token =  params[OAUTH_TOKEN] || params[ACCESS_TOKEN]
         
         header && header =~ /^OAuth\s+/ ?
             header.gsub(/^OAuth\s+/, '') :
-            params[OAUTH_TOKEN]
+            token
       end
       
     private
